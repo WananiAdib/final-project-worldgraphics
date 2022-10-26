@@ -9,35 +9,78 @@ Homies is a web app that allows roommates to keep track of every roommates chore
 
 ## Data Model
 
+The application will store Users, Houses, Chores and Expenses.
 
-The application will store Users, Lists and Items
-
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(__TODO__: sample documents)
+* users can be part of a house (via references)
+* each house has one chores list and expense list (by embedding)
 
 An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
+  givenName: "John",
+  lastName: "Doe",
+  email: "johndoe@email.com",
   hash: // a password hash,
-  lists: // an array of references to List documents
+  house: // a reference to a house
+  profilePhoto: // a reference to profile photo
+  _id: // user id 
 }
 ```
 
-An Example List with Embedded Items:
+An Example House with Embedded Chores and Embedded Expenses:
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
+  users: // a list of references to Users in the house
+  name: "208, Howard Ave",
+  chores: [
+    { 
+      name: "clean dishes", 
+      date: "03/11/2023", 
+      category: "CLEANING",
+      assignee: // a list of references to Users,
+      status: false,
+      approved: false,
+      owner: // reference to User that created 
+      _taskid: // task id
+    },
+    { 
+      name: "Throw the trash", 
+      date: "03/12/2023", 
+      category: "CLEANING",
+      assignee: // a list of references to Users,
+      status: true,
+      approved: false,
+      owner: // reference to User that created 
+      _taskid: // task id
+    }
   ],
-  createdAt: // timestamp
+  expenses:[
+    { 
+      name: "dish soap", 
+      date: "03/11/2023", 
+      category: "CLEANING",
+      value: 2,
+      assignee: // a list of references to Users,
+      status: false,
+      approved: false,
+      owner: // reference to User that created 
+      _taskid: // task id
+    },
+    { 
+      name: "trash bags", 
+      date: "03/12/2023", 
+      category: "CLEANING",
+      value: 5,
+      assignee: // a list of references to Users,
+      status: true,
+      approved: false,
+      owner: // reference to User that created 
+      _taskid: // task id
+    }
+  ],
+  _houseId: // House id
 }
 ```
 
