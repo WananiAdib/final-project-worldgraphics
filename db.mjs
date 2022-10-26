@@ -1,27 +1,43 @@
-
+import mongoose from "mongoose";
 // 1ST DRAFT DATA MODEL
-const mongoose = require('mongoose');
 
 const User = new mongoose.Schema({
-  // username provided by authentication plugin
-  // password hash provided by authentication plugin
-  lists:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'List' }]
+    // email given by authentification plugin
+    // password hash provided by authentication plugin
+    givenName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    house: {type: mongoose.Schema.Types.ObjectId, ref:'House'}, // a reference to a house
+    profilePhoto: {type: URL, required: false},
+    _id: true
 });
 
-const Item = new mongoose.Schema({
-  name: {type: String, required: true},
-  quantity: {type: Number, min: 1, required: true},
-  checked: {type: Boolean, default: false, required: true}
-}, {
-  _id: true
+const Chore = new mongoose.Schema({
+    name: {type: String, required: true}, 
+    date: {type: String, required: true}, 
+    category: {type: Date, required: true},
+    assignee: [{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
+    status: {type: Boolean, default: false, required: true},
+    approved: {type: Boolean, default: false, required: true},
+    owner: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    _id: true
 });
 
-// a grocery list
-// * each list must have a related user
-// * a list can have 0 or more items
+const Expense = new mongoose.Schema({
+    name: {type: String, required: true}, 
+    date: {type: String, required: true}, 
+    category: {type: Date, required: true},
+    value: {type: Number, required: true},
+    assignee: [{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
+    status: {type: Boolean, default: false, required: true},
+    approved: {type: Boolean, default: false, required: true},
+    owner: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    _id: true
+  });
+  
 const List = new mongoose.Schema({
-  user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
-  name: {type: String, required: true},
-  createdAt: {type: Date, required: true},
-  items: [Item]
+    users: [{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
+    name: {type: String, required: true},
+    chores: [Chore],
+    expenses:[Expense],
+    _id: true
 });
