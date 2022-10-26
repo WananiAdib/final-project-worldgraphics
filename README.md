@@ -119,15 +119,18 @@ An Example House with Embedded Chores and Embedded Expenses:
 
 ## User Stories or Use Cases
 
-(__TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://en.wikipedia.org/wiki/Use_case))
-
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
-
+3. as a user, I can create or join a new house 
+4. as a user, I can see all the chores that have been assigned.
+5. as a user, I can see all the expenses that have been assigned.
+6. as a user, I can filter through the chores so that I can see specifically what I want
+7. as a user, I can filter through the expenses so that I can see specifically what I want
+8. As a user, I want to comment in the chore page or the expense page.
+9. As the owner of the chore or expense page, I want to be able to approve whether someone finished the task.
+10. As a user, I want to be able to change the status of a task.
+11. As a user, I want to be able to see a chart of how much money everyone contributed.
+12. As the owner of a task, I want to be able to delete it.
 ## Research Topics
 
 * (5 points) Integrate user authentication
