@@ -91,23 +91,33 @@ An Example House with Embedded Chores and Embedded Expenses:
 
 (__TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
 
-/list/create - page for creating a new shopping list
+/login - page to login or sign up
+![login](documentation/UX-03.jpg)
 
-![list create](documentation/list-create.png)
+/home - home page
+![home](documentation/UX-04.jpg)
 
-/list - page for showing all shopping lists
+/house - house page
+![house](documentation/UX-05.jpg)
 
-![list](documentation/list.png)
-
-/list/slug - page for showing specific shopping list
-
-![list](documentation/list-slug.png)
+/chores - chores page
+![chores](documentation/UX-06.jpg)
+/expenses - expenses page
+![expenses](documentation/UX-07.jpg)
+/expenses/chart - chart of everyone's expenses
+![chart](documentation/UX-08.jpg)
+/chores/new - form for creating new chore
+![new chore](documentation/UX-09.jpg)
+/expenses/new - form for creating new expenses
+![new expense](documentation/UX-10.jpg)
+/chore?id= - each individual chore page
+![chore individual](documentation/UX-11.jpg)
+/expense?id= - each individual expense page
+![expense individual](documentation/UX-12.jpg)
 
 ## Site map
 
-(__TODO__: draw out a site map that shows how pages are related to each other)
-
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+![sitemap](documentation/UX-02.jpg)
 
 ## User Stories or Use Cases
 
