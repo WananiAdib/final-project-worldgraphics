@@ -1,21 +1,14 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
-(__TODO__: your project name)
-
-# Shoppy Shoperson 
+# Homies 
 
 ## Overview
 
-(__TODO__: a brief one or two paragraph, high-level description of your project)
+As the saying goes "good accounts make good friends", well for the purpose of this we would like to change it to "good accounts make good roommates". In big metropolitan areas around the world, more people are moving in with roommates. However, most of the time this ends up in dispute over trivial stuff such as throwing the trash, cleaning dishes, buying dish soap...
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
-
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
+Homies is a web app that allows roommates to keep track of every roommates chores and expenses relating to the house as well as assign some to people. This app would dimish conflict within the house and keep everyone accountable.
 
 
 ## Data Model
 
-(__TODO__: a description of your application's data and their relationships to each other) 
 
 The application will store Users, Lists and Items
 
