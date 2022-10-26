@@ -6,4 +6,13 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const session = require('express-session');
+const sessionOptions = {
+    secret: 'secret',
+    resave: true,
+      saveUninitialized: true
+};
+app.use(session(sessionOptions));
+
+
 app.listen(process.env.PORT || 3000);
