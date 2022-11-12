@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv' 
+dotenv.config()
 import express from 'express'
 import mongoose from 'mongoose'
 import './db.mjs'
@@ -14,7 +16,10 @@ const sessionOptions = {
     resave: true,
       saveUninitialized: true
 };
-
+// Production 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'));
+}
 app.use(session(sessionOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
