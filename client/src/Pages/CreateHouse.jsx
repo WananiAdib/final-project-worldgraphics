@@ -1,16 +1,20 @@
 import axios from 'axios';
 import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+
 function CreateHouse() {
+    const navigate = useNavigate();
     const [houseName, setHouseName] = useState("");
     const [users, setHouseUsers] = useState("");
 
     const handleSubmit = () => {
+        navigate('/home');
         axios.post("/api/create-house", {
             name: houseName,
             users: users
         }).then(function (response) {
             console.log(response);
-          })
+           })
           .catch(function (error) {
             console.log(error);
           });
