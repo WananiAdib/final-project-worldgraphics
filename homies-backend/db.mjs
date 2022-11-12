@@ -7,8 +7,7 @@ const User = new mongoose.Schema({
     givenName: {type: String, required: true},
     lastName: {type: String, required: true},
     house: {type: mongoose.Schema.Types.ObjectId, ref:'House'}, // a reference to a house
-    profilePhoto: {type: URL, required: false},
-    _id: true
+    profilePhoto: {type: String, required: false},
 });
 
 const Chore = new mongoose.Schema({
@@ -19,7 +18,6 @@ const Chore = new mongoose.Schema({
     status: {type: Boolean, default: false, required: true},
     approved: {type: Boolean, default: false, required: true},
     owner: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
-    _id: true
 });
 
 const Expense = new mongoose.Schema({
@@ -31,13 +29,16 @@ const Expense = new mongoose.Schema({
     status: {type: Boolean, default: false, required: true},
     approved: {type: Boolean, default: false, required: true},
     owner: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
-    _id: true
   });
   
-const List = new mongoose.Schema({
+const House = new mongoose.Schema({
     users: [{type: mongoose.Schema.Types.ObjectId, ref:'User'}],
     name: {type: String, required: true},
     chores: [Chore],
     expenses:[Expense],
-    _id: true
 });
+
+mongoose.model("House", House);
+mongoose.model("User", User);
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hw05');
