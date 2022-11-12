@@ -23,7 +23,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(session(sessionOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 const House = mongoose.model("House");
 
