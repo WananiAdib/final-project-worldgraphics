@@ -1,26 +1,30 @@
-import {redirect} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import "./Login.css";
 
 function Login() {
+    const navigate = useNavigate();
+
     const handleSubmit = () => {
-        redirect('/home')
+        navigate('/home');
     }
     return (
-        <>
-            <h1> Homies</h1>
+        <div className='login'> 
             <h1>Login</h1>
-            <form>
-                <div>
+            <form actions="/login" method="POST">
+                <div className='inputDiv'>
                     <label>Username</label>
-                    <input></input>
+                    <input type="text" name="username" required />
                 </div>
-                <div>
+                <div className='inputDiv'>
                     <label>Password</label>
-                    <input></input>
+                    <input type="password" name="password" required />
                 </div>
-                <button onClick={handleSubmit}>Login</button>
-                <button>Signup</button>   
+                <div className='signuplogin'>
+                    <button onClick={handleSubmit}>LOG IN</button>
+                    <button>SIGN UP</button>   
+                </div>
             </form>
-        </>
+        </div>
     );
 }
 

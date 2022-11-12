@@ -12,7 +12,12 @@ const sessionOptions = {
     resave: true,
       saveUninitialized: true
 };
+
 app.use(session(sessionOptions));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Routes below
 
 
 app.listen(process.env.PORT || 5000);

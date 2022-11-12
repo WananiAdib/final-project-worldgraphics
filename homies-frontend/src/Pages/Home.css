@@ -1,0 +1,21 @@
+.home > h1 {
+    font-size: 60px;
+}
+.page-link {
+    margin: auto;
+    box-sizing: content-box;
+    background-color: rgb(204, 255, 0);
+    border-radius: 30px;
+    width: 600px;
+    font-size: 20px;
+    padding: 10px;
+    color: black; 
+    margin: 5px;
+ }
+.links-wrapper {
+    display: flex;
+}
+.inner-links-wrapper {
+    display: flex;
+    flex-direction: column;
+}
