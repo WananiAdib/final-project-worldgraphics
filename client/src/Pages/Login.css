@@ -25,7 +25,7 @@ input {
     align-items: center;
     padding: 10px; 
 }
-.signuplogin > button{
+.signuplogin > button, input[type="submit"]{
     box-sizing: content-box;
     background-color: rgb(204, 255, 0);
     border-radius: 30px;

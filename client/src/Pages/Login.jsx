@@ -10,7 +10,7 @@ function Login() {
     return (
         <div className='login'> 
             <h1>Login</h1>
-            <form actions="/login" method="POST">
+            <form onSubmit={handleSubmit}>
                 <div className='inputDiv'>
                     <label>Username</label>
                     <input type="text" name="username" required />
@@ -20,8 +20,8 @@ function Login() {
                     <input type="password" name="password" required />
                 </div>
                 <div className='signuplogin'>
-                    <button onClick={handleSubmit}>LOG IN</button>
-                    <button onClick={() => {navigate('/register')}}>SIGN UP</button>   
+                    <input type="submit" value="LOGIN" />
+                    <button onClick={() => {navigate('/register')}} >REGISTER</button>  
                 </div>
             </form>
         </div>

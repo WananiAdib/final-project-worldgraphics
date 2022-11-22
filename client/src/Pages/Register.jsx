@@ -1,4 +1,5 @@
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import React, { useReducer, useState } from 'react';
 import "./Login.css";
 
@@ -20,7 +21,13 @@ function Login() {
       }
     const handleSubmit = () => {
        navigate('/home');
-       console.log(formData)
+       axios.post('/api/login', formData)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
     return (
         <div className='login'> 
@@ -44,14 +51,14 @@ function Login() {
                 </div>
                 <div className='inputDiv'>
                     <label>Email</label>
-                    <input type="text" name="email" required onChange={handleChange}/>
+                    <input type="email" name="email" required onChange={handleChange}/>
                 </div>
                 <div className='inputDiv'>
                     <label>Link to photo (optional)</label>
                     <input type="text" name="photo"  onChange={handleChange}/>
                 </div>             
                 <div className='signuplogin'>
-                    <button >SIGN UP</button>   
+                    <input type="submit"  /> 
                 </div>
  
             </form>
