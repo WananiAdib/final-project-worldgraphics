@@ -42,4 +42,4 @@ const House = new mongoose.Schema({
 mongoose.model("House", House);
 mongoose.model("User", User);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/hw05');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/homies');

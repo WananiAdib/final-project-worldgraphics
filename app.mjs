@@ -7,6 +7,8 @@ import path from 'path'
 import session from 'express-session'
 import bcrypt from "bcrypt";
 import { fileURLToPath } from 'url';
+import passport from 'passport';
+import LocalStrategy from 'passport-local'
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -24,6 +26,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(session(sessionOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 const House = mongoose.model("House");
 const User = mongoose.model("User")
@@ -34,7 +38,45 @@ app.use((req, res, next) => {
   next();
 });
 
+// Passport config
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    User.findOne({username: username}, (err, user) => {
+      if (err) {
+        return done(err)
+      }
+       if (!user) {
+         return done(null, false)
+       }
+       bcrypt.compare(password, user.password, (err, isValid) => {
+         if (err) {
+           return done(err)
+         }
+         if (!isValid) {
+           return done(null, false)
+         }
+         return done(null, user)
+       })
+     })
+   }
+ ))
 
+ passport.serializeUser(function (user, cb) {
+  cb(null, user.username)
+})
+
+passport.deserializeUser(function (username, cb) {
+  findUser(username, cb)
+})
+
+// function authenticationMiddleware () {
+//   return function (req, res, next) {
+//     if (req.isAuthenticated()) {
+//       return next()
+//     }
+//     res.redirect('/')
+//   }
+// }
 // Routes below
 app.post("/api/create-house", (req, res) => {
   
@@ -66,11 +108,16 @@ app.post("/api/register", async (req, res) => {
         res.sendStatus(500)
         console.log(err);
       } else {
-        res.sendStatus(200);
+        res.redirect('/');
       }
     })
   } catch {
   }
 })
+
+app.post("/api/login", passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login'
+}));
 
 app.listen(process.env.PORT || 5000, console.log(`Server starting at ${process.env.PORT || 5000}`));

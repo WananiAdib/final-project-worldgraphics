@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useReducer, useState } from 'react';
 import "./Login.css";
 
-function Login() {
+function Register() {
     const navigate = useNavigate();
     const formReducer = (state, event) => {
         return {
@@ -20,13 +20,13 @@ function Login() {
         });
       }
     const handleSubmit = () => {
-       navigate('/home');
-       axios.post('/api/login', formData)
+        axios.post('/api/register', formData)
         .then(function (response) {
             console.log(response);
         })
         .catch(function (error) {
             console.log(error);
+            navigate('/home');
         });
     }
     return (
@@ -66,4 +66,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
