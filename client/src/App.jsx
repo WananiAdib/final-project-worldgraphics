@@ -7,6 +7,7 @@ import CreateHouse from './Pages/CreateHouse';
 import JoinHouse from './Pages/JoinHouse';
 import Home from './Pages/Home';
 import House from './Pages/House';
+import Register from './Pages/Register';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="join-house" element={<JoinHouse />} />
           <Route path="home" element={<Home />} />
           <Route path="house" element={<House />} />
+          <Route path="register" element={<Register />} />
         </Routes>
       </BrowserRouter>
   )

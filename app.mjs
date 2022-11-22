@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 const sessionOptions = {
     secret: 'secret',
     resave: true,
-      saveUninitialized: true
+    saveUninitialized: true
 };
 // Production 
 if (process.env.NODE_ENV === "production") {
@@ -35,8 +35,9 @@ app.use((req, res, next) => {
 
 // Routes below
 app.post("/api/create-house", (req, res) => {
+  
   new House({
-    users: undefined,
+    users: req.body.users,
     name: req.body.name,
   }).save((err) => {
     if (err) {

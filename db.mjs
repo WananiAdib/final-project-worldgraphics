@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 // 1ST DRAFT DATA MODEL
 
 const User = new mongoose.Schema({
-    // email given by authentification plugin
-    // password hash provided by authentication plugin
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    username: {type: String, required: true},
     givenName: {type: String, required: true},
     lastName: {type: String, required: true},
     house: {type: mongoose.Schema.Types.ObjectId, ref:'House'}, // a reference to a house

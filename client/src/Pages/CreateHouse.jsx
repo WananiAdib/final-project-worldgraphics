@@ -11,7 +11,7 @@ function CreateHouse() {
         navigate('/home');
         axios.post("/api/create-house", {
             name: houseName,
-            users: users
+            users: users.split(",")
         }).then(function (response) {
             console.log(response);
            })
