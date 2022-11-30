@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css';
+import './Styles/App.css';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Login from "./Pages/Login";
 import CreateHouse from './Pages/CreateHouse';
