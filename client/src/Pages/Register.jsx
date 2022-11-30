@@ -19,7 +19,8 @@ function Register() {
           value: event.target.value,
         });
       }
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
         axios.post('/api/register', formData)
         .then(function (response) {
             console.log(response);

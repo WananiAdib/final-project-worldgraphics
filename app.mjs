@@ -81,7 +81,7 @@ passport.deserializeUser(function (username, cb) {
 app.post("/api/create-house", (req, res) => {
   
   new House({
-    users: req.body.users,
+    // users: req.body.users,
     name: req.body.name,
   }).save((err) => {
     if (err) {

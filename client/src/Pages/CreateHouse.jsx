@@ -7,8 +7,8 @@ function CreateHouse() {
     const [houseName, setHouseName] = useState("");
     const [users, setHouseUsers] = useState("");
 
-    const handleSubmit = () => {
-        navigate('/home');
+    const handleSubmit = (event) => {
+        event.preventDefault()
         axios.post("/api/create-house", {
             name: houseName,
             users: users.split(",")
