@@ -6,9 +6,24 @@
   letter-spacing: -0.07em;
   background-color: black;
 }
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .header > h1 {
   font-size: 50px;
   margin: 20px 40px;
   padding: 0px;
-  text-align: left;
+}
+.userinfo {
+  display: flex;
+  font-size: 14px;
+  margin: 20px 40px;
+  padding: 0px;
+  color: white;
+  align-items: center;
+}
+.userinfo > span {
+  margin: 10px
 }

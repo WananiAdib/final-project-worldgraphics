@@ -10,6 +10,8 @@ import Register from './Pages/Register';
 import ProtectedRoute from './Components/ProtectedRoute';
 import axios from 'axios';
 import NavBar from './Components/NavBar';
+import Chores from './Pages/Chores';
+import Expenses from './Pages/Expenses';
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -35,6 +37,8 @@ function App() {
           <Route path="login" element={user ?  <Navigate to="/" /> : <Login handleAuth={setAuth} />} />
           <Route element={<ProtectedRoute user={user} />}>
             <Route path="create-house" element={<CreateHouse />} />
+            <Route path="chores" element={<Chores />} />
+            <Route path='expenses' element={<Expenses />} />
             <Route path="join-house" element={<JoinHouse />} />
             <Route path="/" element={<Home />} />
             <Route path="house" element={<House />} />
