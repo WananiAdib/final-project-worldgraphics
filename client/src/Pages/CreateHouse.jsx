@@ -12,10 +12,11 @@ function CreateHouse() {
         axios.post("/api/create-house", {
             name: houseName,
             users: users.split(",")
-        }).then(function (response) {
-            console.log(response);
+        })
+        .then(function (response) {
+            console.log(response.data.user);
            })
-          .catch(function (error) {
+        .catch(function (error) {
             console.log(error);
           });
     }

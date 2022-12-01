@@ -69,14 +69,7 @@ passport.deserializeUser( (user, cb) => {
   return cb(null, user);
 });
 
-// function authenticationMiddleware () {
-//   return function (req, res, next) {
-//     if (req.isAuthenticated()) {
-//       return next()
-//     }
-//     res.redirect('/')
-//   }
-// }
+
 // Routes below
 app.post("/api/create-house", (req, res) => {
 	new House({
@@ -120,7 +113,23 @@ app.post("/api/login", passport.authenticate("local", {
 );
 
 app.get('/api/login/success', (req,res) => {
-  res.sendStatus(200);
+if (req.user) {
+    res.status(200).json({
+      success: true,
+      message: "successfull",
+      user: req.user,
+    });
+  }
+})
+
+app.post('/logout', (req, res) => {
+	req.logout((err) => {
+		if (err) {return next(err); }
+		res.status(200).json({
+			success: true,
+			message: "sucessfully logged out"
+		})
+	})
 })
 
 app.get('/api/login/failure', (req,res) => {
