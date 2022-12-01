@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Styles/App.css';
-import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation} from 'react-router-dom';
 import Login from "./Pages/Login";
 import CreateHouse from './Pages/CreateHouse';
 import JoinHouse from './Pages/JoinHouse';
@@ -9,31 +9,30 @@ import House from './Pages/House';
 import Register from './Pages/Register';
 import ProtectedRoute from './Components/ProtectedRoute';
 import axios from 'axios';
+import NavBar from './Components/NavBar';
 
 function App() {
+  const [auth, setAuth] = useState(false);
   const [user, setUser] = useState('');
+  useEffect(()=>{console.log('auth changed')}, [auth]);
   useEffect(() => {
-    axios.get("/api/login/success")
+    axios.get("/api/auth")
     .then((res) => {
       if (res.status == 200) {
+        console.log("checking auth")
         setUser(res.data.user);
+        setAuth(res.data.success);
       }
     })
     .catch((err) => {
       console.log(err);
     })
-  }, []);
+  },[ auth]);
   return (
       <BrowserRouter>
-      <div className='header'>
-        <h1>Homies</h1>
-        <span>
-          logged in as: @{user}
-        </span>
-        <button>Logout</button>
-      </div>
+        <NavBar user={user} onLogout={setAuth} /> 
         <Routes>
-          <Route path="login" element={user ?  <Navigate to="/" /> : <Login />} />
+          <Route path="login" element={user ?  <Navigate to="/" /> : <Login handleAuth={setAuth} />} />
           <Route element={<ProtectedRoute user={user} />}>
             <Route path="create-house" element={<CreateHouse />} />
             <Route path="join-house" element={<JoinHouse />} />

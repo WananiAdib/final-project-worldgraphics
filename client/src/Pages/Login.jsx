@@ -3,7 +3,7 @@ import "../Styles/Login.css";
 import axios from 'axios';
 import {useReducer} from 'react';
 
-function Login() {
+function Login(props) {
     const navigate = useNavigate();
     const formReducer = (state, event) => {
         return {
@@ -28,6 +28,8 @@ function Login() {
         })
         .then(function (response) {
             console.log(response);
+            props.handleAuth(true);
+            navigate('/');
         })
         .catch(function (error) {
             console.log(error);
