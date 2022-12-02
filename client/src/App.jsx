@@ -12,6 +12,7 @@ import axios from 'axios';
 import NavBar from './Components/NavBar';
 import Chores from './Pages/Chores';
 import Expenses from './Pages/Expenses';
+import Chore from './Pages/Chore';
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -42,6 +43,7 @@ function App() {
             <Route path="join-house" element={<JoinHouse />} />
             <Route path="/" element={<Home />} />
             <Route path="house" element={<House />} />
+            <Route path="chores/:id" element={<Chore/>} />
           </Route>
           <Route path="register" element={<Register />} />
         </Routes>
