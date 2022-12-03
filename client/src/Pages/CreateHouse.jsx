@@ -1,41 +1,54 @@
-import axios from 'axios';
-import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import axios from "axios";
+import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateHouse() {
-    const navigate = useNavigate();
-    const [houseName, setHouseName] = useState("");
-    const [users, setHouseUsers] = useState("");
+	const navigate = useNavigate();
+	const formReducer = (state, event) => {
+		return {
+			...state,
+			[event.name]: event.value,
+		};
+	};
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post("/api/create-house", {
-            name: houseName,
-            users: users.split(",")
-        })
-        .then(function (response) {
-            console.log(response.data.user);
-           })
-        .catch(function (error) {
-            console.log(error);
-          });
-    }
-    return (
-         <>
-         <h1>Create House</h1>
-         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Name of the house</label>
-                <input type="text" value={houseName} onChange={(e) => {setHouseName(e.target.value)}} />
-            </div>
-            <div>
-                <label>Add users</label>
-                <input type="text" value={users} onChange={(e) => {setHouseUsers(e.target.value)}} />
-            </div>
-            <input type="submit" value="Login" />
-         </form>
-         </> 
-        );
+	const [formData, setFormData] = useReducer(formReducer, {});
+	const handleChange = (event) => {
+		setFormData({
+			name: event.target.name,
+			value: event.target.value,
+		});
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		axios
+			.post("/api/create-house", formData)
+			.then(function (response) {
+				console.log(response.data.user);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
+	return (
+		<div className="login">
+			<h1>Create House</h1>
+			<form onSubmit={handleSubmit}>
+				<div className="inputDiv">
+					<label>House Name</label>
+					<input
+						type="text"
+						name="houseName"
+						required
+						onChange={handleChange}
+					/>
+				</div>
+				<div className="signuplogin">
+					<input type="submit" />
+				</div>
+			</form>
+		</div>
+	);
 }
 
 export default CreateHouse;

@@ -4,13 +4,13 @@ import {
 	BsSortDownAlt,
 } from "react-icons/bs";
 import ListTable from "../Components/ListTable";
-import "../Styles/Chores.css";
+import BothTable from "../Components/BothTable";
 function Chores() {
 	const mockChores = [
 		{
 			Name: "Clean th plates",
 			Category: "Clean",
-            Assignees: "Hada, hadak, hadik",
+			Assignees: "Hada, hadak, hadik",
 			Date: "Today",
 			Status: "In progress",
 			Approved: "NO",
@@ -18,7 +18,7 @@ function Chores() {
 		{
 			Name: "Clean th plates",
 			Category: "Clean",
-            Assignees: "Hada, hadak, hadik",
+			Assignees: "Hada, hadak, hadik",
 			Date: "Today",
 			Status: "In progress",
 			Approved: "NO",
@@ -26,7 +26,7 @@ function Chores() {
 		{
 			Name: "Clean th plates",
 			Category: "Clean",
-            Assignees: "Hada, hadak, hadik",
+			Assignees: "Hada, hadak, hadik",
 			Date: "Today",
 			Status: "In progress",
 			Approved: "NO",
@@ -34,7 +34,7 @@ function Chores() {
 		{
 			Name: "Clean th plates",
 			Category: "Clean",
-            Assignees: "Hada, hadak, hadik",
+			Assignees: "Hada, hadak, hadik",
 			Date: "Today",
 			Status: "In progress",
 			Approved: "NO",
@@ -42,22 +42,14 @@ function Chores() {
 		{
 			Name: "Clean th plates",
 			Category: "Clean",
-            Assignees: "Hada, hadak, hadik",
+			Assignees: "Hada, hadak, hadik",
 			Date: "Today",
 			Status: "In progress",
 			Approved: "NO",
 		},
 	];
 
-	return (
-		<div className="table-wrapper">
-			<div className="set-wrapper">
-				<BsPlusSquareFill size={80} />
-				<BsFillFilterSquareFill size={80} />
-			</div>
-			<ListTable data={mockChores}/>
-		</div>
-	);
+	return <BothTable data={mockChores} isExpense={false} />;
 }
 
 export default Chores;

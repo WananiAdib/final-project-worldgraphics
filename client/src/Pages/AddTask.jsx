@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useReducer } from "react";
-import "../Styles/Login.css";
-
-function Register() {
+function AddTask() {
 	const navigate = useNavigate();
 	const formReducer = (state, event) => {
 		return {
@@ -11,7 +9,6 @@ function Register() {
 			[event.name]: event.value,
 		};
 	};
-
 	const [formData, setFormData] = useReducer(formReducer, {});
 	const handleChange = (event) => {
 		setFormData({
@@ -31,59 +28,69 @@ function Register() {
 				navigate("/home");
 			});
 	};
+	// Check if expenses add or Chore expesnse
+	const location = useLocation();
+	const isExpense = location.pathname.split("/")[1] == "expenses";
 	return (
 		<div className="login">
-			<h1>Register</h1>
+			<h1>Add {isExpense ? "expense" : "chore"}</h1>
 			<form onSubmit={handleSubmit}>
 				<div className="inputDiv">
-					<label>First Name</label>
+					<label>Name</label>
 					<input
 						type="text"
-						name="givenName"
+						name="Name"
 						required
 						onChange={handleChange}
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Last Name</label>
+					<label>Category</label>
 					<input
 						type="text"
-						name="lastName"
+						name="Category"
 						required
 						onChange={handleChange}
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Username</label>
+					<label>Assignees</label>
 					<input
 						type="text"
-						name="username"
+						name="Assignees"
 						required
 						onChange={handleChange}
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Password</label>
+					<label>Date</label>
 					<input
-						type="password"
-						name="password"
+						type="text"
+						name="Date"
 						required
 						onChange={handleChange}
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Email</label>
+					<label>Status</label>
 					<input
-						type="email"
-						name="email"
+						type="text"
+						name="Status"
 						required
 						onChange={handleChange}
 					/>
 				</div>
-				<div className="inputDiv">
-					<label>Link to photo (optional)</label>
-					<input type="text" name="photo" onChange={handleChange} />
-				</div>
+				{isExpense && (
+					<div className="inputDiv">
+						<label>Value</label>
+						<input
+							type="number"
+							name="Value"
+							required
+							onChange={handleChange}
+						/>
+					</div>
+				)}
 				<div className="signuplogin">
 					<input type="submit" />
 				</div>
@@ -91,5 +98,4 @@ function Register() {
 		</div>
 	);
 }
-
-export default Register;
+export default AddTask;
