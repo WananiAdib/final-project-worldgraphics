@@ -20,7 +20,7 @@ function NavBar(props) {
 	};
 	return (
 		<div className="header">
-			<h1>Homies</h1>
+			<h1 onClick={()=>navigate('/')}>Homies</h1>
 			{props.user && (
 				<div className="userinfo">
 					<span>@{props.user}</span>

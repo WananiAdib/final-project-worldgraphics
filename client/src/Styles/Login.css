@@ -35,3 +35,6 @@ input {
     color: black; 
     margin: 5px;
  }
+ .success h2 {
+    color: white;
+ }

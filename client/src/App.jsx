@@ -33,7 +33,7 @@ function App() {
 			.then((res) => {
 				if (res.status == 200) {
 					console.log("checking auth");
-					setUser(res.data.user);
+					setUser(res.data.user?.username);
 					setAuth(res.data.success);
 				}
 			})

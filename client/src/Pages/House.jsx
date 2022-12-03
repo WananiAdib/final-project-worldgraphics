@@ -2,7 +2,19 @@ import { Link } from "react-router-dom";
 import { GiBroom } from "react-icons/gi";
 import { GrMoney } from "react-icons/gr";
 import "../Styles/House.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function House() {
+	const [homies, setHomies] = useState([]);
+	useEffect(() => {
+		axios.get('/api/house/roommates')
+		.then((res) => {
+			console.log(res);
+			setHomies(res.data.info);
+		}).catch((err) => {
+			console.log(err)
+		})
+	}, [])
 	const mockDue = [
 		{ title: "Clean the plates", date: "Tomorrow" },
 		{ title: "Throw the trash", date: "Tomorrow" },
@@ -20,7 +32,7 @@ function House() {
 			</tr>
 		);
 	});
-	const homiesSnippet = mockHomies.map((e) => {
+	const homiesSnippet = homies.map((e) => {
 		return (
 			<li>
 				{e.firstName} {e.lastName}

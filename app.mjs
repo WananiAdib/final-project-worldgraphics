@@ -9,6 +9,7 @@ import passport from "passport";
 import User from "./src/Models/User.mjs";
 import House from "./src/Models/House.mjs";
 import authRoutes from './src/Routes/auth.mjs'
+import createHouseRoutes from './src/Routes/house.mjs'
 
 const app = express();
 connect();
@@ -39,19 +40,7 @@ app.use((req, res, next) => {
 
 app.use('/api/auth', authRoutes);
 
-app.post("/api/create-house", (req, res) => {
-	new House({
-		// users: req.body.users,
-		name: req.body.name,
-	}).save((err) => {
-		if (err) {
-			res.sendStatus(500);
-			console.log(err);
-		} else {
-			res.sendStatus(200);
-		}
-	});
-});
+app.use('/api/house', createHouseRoutes);
 
 
 app.listen(

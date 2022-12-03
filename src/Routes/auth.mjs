@@ -28,11 +28,17 @@ passport.use(
 );
 
 passport.serializeUser((user, cb) => {
-	cb(null, user.username);
+	cb(null, user._id);
 });
 
-passport.deserializeUser((user, cb) => {
-	return cb(null, user);
+passport.deserializeUser((id, cb) => {
+	User.findById(id, (err, user) => {
+		if (err) {
+		  cb(err);
+		} else {
+		  cb(null, user);
+		}
+	})
 });
 
 // Routes below
