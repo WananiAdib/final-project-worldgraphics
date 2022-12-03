@@ -19,13 +19,14 @@ function AddTask() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.post("/api/register", formData)
+			.post(`/api/${isExpense ? "expenses" : "chores"}/new`, formData)
 			.then(function (response) {
 				console.log(response);
+				navigate("/");
 			})
 			.catch(function (error) {
 				console.log(error);
-				navigate("/home");
+			// err handling here
 			});
 	};
 	// Check if expenses add or Chore expesnse
@@ -54,28 +55,19 @@ function AddTask() {
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Assignees</label>
-					<input
-						type="text"
-						name="Assignees"
-						required
-						onChange={handleChange}
-					/>
-				</div>
-				<div className="inputDiv">
 					<label>Date</label>
 					<input
-						type="text"
+						type="date"
 						name="Date"
 						required
 						onChange={handleChange}
 					/>
 				</div>
 				<div className="inputDiv">
-					<label>Status</label>
+					<label>Assignees</label>
 					<input
 						type="text"
-						name="Status"
+						name="Assignees"
 						required
 						onChange={handleChange}
 					/>

@@ -10,6 +10,8 @@ import User from "./src/Models/User.mjs";
 import House from "./src/Models/House.mjs";
 import authRoutes from './src/Routes/auth.mjs'
 import createHouseRoutes from './src/Routes/house.mjs'
+import choreRoutes from './src/Routes/chores.mjs'
+import expenseRoutes from './src/Routes/expense.mjs'
 
 const app = express();
 connect();
@@ -41,6 +43,8 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoutes);
 
 app.use('/api/house', createHouseRoutes);
+app.use('/api/chores', choreRoutes);
+app.use('/api/expenses', expenseRoutes);
 
 
 app.listen(
