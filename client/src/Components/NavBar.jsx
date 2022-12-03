@@ -8,7 +8,7 @@ function NavBar(props) {
 	const navigate = useNavigate();
 	const handleLogout = () => {
 		axios
-			.post("/api/logout")
+			.post("/api/auth/logout")
 			.then((res) => {
 				console.log(res.data.message);
 				props.onLogout(false);

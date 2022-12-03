@@ -22,7 +22,7 @@ function Register() {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.post("/api/register", formData)
+			.post("/api/auth/register", formData)
 			.then(function (response) {
 				console.log(response);
 			})

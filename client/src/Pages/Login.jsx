@@ -23,7 +23,7 @@ function Login(props) {
 		// TODO: Check if logged in otherwise showcase error message
 		event.preventDefault();
 		axios
-			.post("/api/login", {
+			.post("/api/auth/login", {
 				username: formData.username,
 				password: formData.password,
 			})
