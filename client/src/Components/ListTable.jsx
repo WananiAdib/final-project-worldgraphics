@@ -12,14 +12,14 @@ function ListTable(props) {
 	};
 	const rows = props.data.map((e, i) => {
 		return (
-			<tr key={i} value={i} onClick={(e) => handleClick(e)}>
-				<td>{e.Name}</td>
-				<td>{e.Category}</td>
-				<td>{e.Assignees}</td>
-				<td>{e.Date}</td>
-				<td>{e.Status}</td>
-				<td>{e.Approved}</td>
-				{props.isExpense && <td>{e.Value}</td>}
+			<tr key={i} value={e._id} onClick={(e) => handleClick(e)}>
+				<td>{e.name}</td>
+				<td>{e.category}</td>
+				<td>{e.assignee}</td>
+				<td>{new Date(e.date).toDateString()}</td>
+				<td>{e.status ? "Done" : "In progress"}</td>
+				<td>{e.approved? "Yes": "Not yet"}</td>
+				{props.isExpense && <td>{e.value}</td>}
 			</tr>
 		);
 	});

@@ -14,10 +14,11 @@ function Chores() {
 		axios.get('/api/chores/')
 		.then((res) => {
 			console.log(res);
+			setData(res.data);
 		}).catch((err) => {
 			console.log(err);
 		})
-	})
+	}, [])
 	const mockChores = [
 		{
 			Name: "Clean th plates",
@@ -61,7 +62,7 @@ function Chores() {
 		},
 	];
 
-	return <BothTable data={mockChores} isExpense={false} />;
+	return <BothTable data={data} isExpense={false} />;
 }
 
 export default Chores;

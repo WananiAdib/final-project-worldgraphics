@@ -33,7 +33,8 @@ router.get('/', async (req,res) => {
 })
 router.get('/:id', async(req,res) => {
     try {
-        const chore = await House.findOne({"chores._id": req.params.id});
+        const house = await House.findOne({"chores._id": req.params.id});
+        const chore = house.chores.filter(x => x._id == req.params.id)[0];
         res.status(200).send(chore);
     } catch {
         res.sendStatus(500);

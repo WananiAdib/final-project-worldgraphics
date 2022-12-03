@@ -22,7 +22,7 @@ function AddTask() {
 			.post(`/api/${isExpense ? "expenses" : "chores"}/new`, formData)
 			.then(function (response) {
 				console.log(response);
-				navigate("/");
+				navigate(`/${isExpense ? "expenses" : "chores"}`);
 			})
 			.catch(function (error) {
 				console.log(error);

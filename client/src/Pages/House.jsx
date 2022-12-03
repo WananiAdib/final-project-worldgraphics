@@ -6,29 +6,31 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 function House() {
 	const [homies, setHomies] = useState([]);
+	const [latest, setLatest] = useState([]);
 	useEffect(() => {
-		axios.get('/api/house/roommates')
-		.then((res) => {
-			console.log(res);
-			setHomies(res.data.info);
-		}).catch((err) => {
-			console.log(err)
-		})
-	}, [])
-	const mockDue = [
-		{ title: "Clean the plates", date: "Tomorrow" },
-		{ title: "Throw the trash", date: "Tomorrow" },
-	];
-	const mockHomies = [
-		{ firstName: "Adib", lastName: "El Ounani" },
-		{ firstName: "Claudio", lastName: "Bravo" },
-		{ firstName: "Problem", lastName: "Achiri" },
-	];
-	const dueSnippet = mockDue.map((e) => {
+		axios
+			.get("/api/house/roommates")
+			.then((res) => {
+				console.log(res);
+				setHomies(res.data.info);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		axios
+			.get("/api/chores")
+			.then((res) => {
+				setLatest(res.data.slice(0, 5));
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+	const dueSnippet = latest.map((e) => {
 		return (
 			<tr>
-				<td>{e.title}</td>
-				<td>{e.date}</td>
+				<td>{e.name}</td>
+				<td>{new Date(e.date).toLocaleDateString()}</td>
 			</tr>
 		);
 	});

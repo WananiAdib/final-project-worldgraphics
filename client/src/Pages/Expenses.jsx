@@ -1,54 +1,20 @@
 import BothTable from "../Components/BothTable";
+import axios from "axios";
+import {useEffect, useState} from 'react'
 
 function Expenses() {
-	const expensesData = [
-		{
-			Name: "Clean th plates",
-			Category: "Clean",
-			Assignees: "Hada, hadak, hadik",
-			Date: "Today",
-			Status: "In progress",
-			Approved: "NO",
-			Value: "400",
-		},
-		{
-			Name: "Clean th plates",
-			Category: "Clean",
-			Assignees: "Hada, hadak, hadik",
-			Date: "Today",
-			Status: "In progress",
-			Approved: "NO",
-			Value: "400",
-		},
-		{
-			Name: "Clean th plates",
-			Category: "Clean",
-			Assignees: "Hada, hadak, hadik",
-			Date: "Today",
-			Status: "In progress",
-			Approved: "NO",
-			Value: "400",
-		},
-		{
-			Name: "Clean th plates",
-			Category: "Clean",
-			Assignees: "Hada, hadak, hadik",
-			Date: "Today",
-			Status: "In progress",
-			Approved: "NO",
-			Value: "400",
-		},
-		{
-			Name: "Clean th plates",
-			Category: "Clean",
-			Assignees: "Hada, hadak, hadik",
-			Date: "Today",
-			Status: "In progress",
-			Approved: "NO",
-			Value: "400",
-		},
-	];
-	return <BothTable data={expensesData} isExpense={true} />;
+	const [data, setData] = useState([]);
+	useEffect(() => {
+		axios.get('/api/expenses/')
+		.then((res) => {
+			console.log(res);
+			setData(res.data);
+		}).catch((err) => {
+			console.log(err);
+		})
+	}, [])
+	
+	return <BothTable data={data} isExpense={true} />;
 }
 
 export default Expenses;
