@@ -25,11 +25,11 @@ function Register() {
 			.post("/api/auth/register", formData)
 			.then(function (response) {
 				console.log(response);
+				navigate('/');
 			})
 			.catch(function (error) {
 				console.log(error);
-				navigate("/home");
-			});
+				});
 	};
 	return (
 		<div className="login">

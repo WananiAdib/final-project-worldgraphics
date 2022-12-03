@@ -11,7 +11,7 @@ function Login(props) {
 			[event.name]: event.value,
 		};
 	};
-
+	const [err, setErr] = useState();
 	const [formData, setFormData] = useReducer(formReducer, {});
 	const handleChange = (event) => {
 		setFormData({
@@ -34,11 +34,13 @@ function Login(props) {
 			})
 			.catch(function (error) {
 				console.log(error);
+				setErr("Wrong username or password");
 			});
 	};
 	return (
 		<div className="login">
 			<h1>Login</h1>
+			{err && <span style={{color: 'red'}}>{err}</span>}
 			<form onSubmit={handleSubmit}>
 				<div className="inputDiv">
 					<label>Username</label>
